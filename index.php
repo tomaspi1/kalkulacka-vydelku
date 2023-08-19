@@ -6,7 +6,7 @@
 <body>
 
 <?php
-$seznam = ["PHP", "JS", "TYPESCRIPT"];
+$seznam = ["PHP11111", "JS", "TYPESCRIPT"];
 echo implode(" ", $seznam);
 ?>
 
