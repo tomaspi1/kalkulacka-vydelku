@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -44,10 +45,20 @@
         <h1>Vítejte na mé PHP webové stránce</h1>
     </header>
     <nav>
-        <a href="#">Domů</a>
-        <a href="#">O nás</a>
-        <a href="#">Služby</a>
-        <a href="#">Kontakt</a>
+        <?php
+        $menuItems = array(
+            "Domů" => "#",
+            "O nás" => "#",
+            "Služby" => "#",
+            "Kontakt" => "#"
+        );
+
+        echo "<ul>";
+        foreach ($menuItems as $title => $link) {
+            echo "<li><a href=\"$link\">$title</a></li>";
+        }
+        echo "</ul>";
+        ?>
     </nav>
     <main>
         <?php
