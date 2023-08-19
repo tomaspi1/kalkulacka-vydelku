@@ -6,7 +6,7 @@
 <body>
 
 <?php
-$seznam = ["projekt1", "projekt2", "projekt3"];
+$seznam = ["PHP", "JS", "TYPESCRIPT"];
 echo implode(" ", $seznam);
 ?>
 
