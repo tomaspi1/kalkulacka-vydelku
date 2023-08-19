@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj PHP web s menu</title>
+    <title>Můj PHP web s obsahem</title>
     <style>
         /* Základní styly pro záhlaví */
         header {
@@ -61,9 +60,17 @@
         ?>
     </nav>
     <main>
-        <?php
-        echo "<p>Tento obsah je generován pomocí PHP.</p>";
-        ?>
+        <h2>O nás</h2>
+        <p>Jsme tým nadšených vývojářů a designérů, kteří tvoří moderní a kreativní webové stránky.</p>
+        <h2>Naše služby</h2>
+        <ul>
+            <li>Webový design</li>
+            <li>Vývoj webových aplikací</li>
+            <li>Responzivní design</li>
+            <li>SEO optimalizace</li>
+        </ul>
+        <h2>Kontakt</h2>
+        <p>Máte-li nějaké dotazy, kontaktujte nás na <a href="mailto:info@example.com">info@example.com</a>.</p>
     </main>
 </body>
 </html>
