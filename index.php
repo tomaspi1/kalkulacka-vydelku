@@ -52,25 +52,19 @@
             "Kontakt" => "#"
         );
 
-        echo "<ul>";
         foreach ($menuItems as $title => $link) {
-            echo "<li><a href=\"$link\">$title</a></li>";
+            echo "<a href=\"$link\">$title</a>";
         }
-        echo "</ul>";
         ?>
     </nav>
     <main>
         <h2>O nás</h2>
         <p>Jsme tým nadšených vývojářů a designérů, kteří tvoří moderní a kreativní webové stránky.</p>
         <h2>Naše služby</h2>
-        <ul>
-            <li>Webový design</li>
-            <li>Vývoj webových aplikací</li>
-            <li>Responzivní design</li>
-            <li>SEO optimalizace</li>
-        </ul>
+        <p>Webový design, vývoj webových aplikací, responzivní design, SEO optimalizace</p>
         <h2>Kontakt</h2>
         <p>Máte-li nějaké dotazy, kontaktujte nás na <a href="mailto:info@example.com">info@example.com</a>.</p>
     </main>
 </body>
 </html>
+
