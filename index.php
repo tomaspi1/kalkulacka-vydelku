@@ -106,6 +106,9 @@
                     savedData += `Směna ${i}: ${document.getElementById(`row${i}`).value}\n`;
                 }
 
+                const totalText = totalEarnings.textContent;
+                savedData += `${totalText}`;
+
                 const blob = new Blob([savedData], { type: "text/plain;charset=utf-8" });
                 const a = document.createElement("a");
                 a.href = URL.createObjectURL(blob);
@@ -116,5 +119,3 @@
     </script>
 </body>
 </html>
-
-
