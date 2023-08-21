@@ -91,11 +91,6 @@
 
                 let total = (hoursWorked * hourlyRate) + (additionalHours * additionalRate);
                 
-                for (let i = 1; i <= 10; i++) {
-                    const rowValue = parseFloat(document.getElementById(`row${i}`).value) || 0;
-                    total += rowValue;
-                }
-                
                 totalEarnings.textContent = `Celkový výdělek: ${total.toFixed(2)} Kč`;
             });
             
@@ -121,6 +116,5 @@
     </script>
 </body>
 </html>
-
 
 
