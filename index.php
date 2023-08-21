@@ -10,19 +10,19 @@
         <h1>Kalkulačka Výdělku</h1>
         <ul>
             <li>
-                <label for="hoursWorked">Odpracované hodiny:</label>
+                <label for="hoursWorked">Odpracované hodiny (h):</label>
                 <input type="number" id="hoursWorked" step="1">
             </li>
             <li>
-                <label for="hourlyRate">Hodinová sazba:</label>
+                <label for="hourlyRate">Hodinová sazba (kč):</label>
                 <input type="number" id="hourlyRate">
             </li>
             <li>
-                <label for="additionalHours">Odpracované hodiny (doprava):</label>
+                <label for="additionalHours">Odpracované hodiny - doprava (h):</label>
                 <input type="number" id="additionalHours" step="1">
             </li>
             <li>
-                <label for="additionalRate">Hodinová sazba (doprava):</label>
+                <label for="additionalRate">Hodinová sazba - doprava (kč):</label>
                 <input type="number" id="additionalRate">
             </li>
         </ul>
@@ -97,10 +97,10 @@
             saveButton.addEventListener("click", function () {
                 let savedData = "";
 
-                savedData += `Odpracované hodiny: ${document.getElementById("hoursWorked").value}\n`;
-                savedData += `Hodinová sazba: ${document.getElementById("hourlyRate").value}\n`;
-                savedData += `Odpracované hodiny (doprava): ${document.getElementById("additionalHours").value}\n`;
-                savedData += `Hodinová sazba (doprava): ${document.getElementById("additionalRate").value}\n`;
+                savedData += `Odpracované hodiny (h): ${document.getElementById("hoursWorked").value}\n`;
+                savedData += `Hodinová sazba (kč): ${document.getElementById("hourlyRate").value}\n`;
+                savedData += `Odpracované hodiny - doprava (h): ${document.getElementById("additionalHours").value}\n`;
+                savedData += `Hodinová sazba - doprava (kč): ${document.getElementById("additionalRate").value}\n`;
 
                 for (let i = 1; i <= 10; i++) {
                     savedData += `Směna ${i}: ${document.getElementById(`row${i}`).value}\n`;
