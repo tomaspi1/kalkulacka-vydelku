@@ -3,64 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f2f2f2;
-        }
-
-        .calculator {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        label, input {
-            display: block;
-            margin: 10px 0;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        #totalEarnings {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
     <title>Výpočet Výdělku</title>
 </head>
 <body>
     <div class="calculator">
         <h1>Kalkulačka Výdělku</h1>
-        <label for="hoursWorked">Odpracované hodiny:</label>
-        <input type="number" id="hoursWorked" step="0.1">
+        <ul>
+            <li>
+                <label for="hoursWorked">Odpracované hodiny:</label>
+                <input type="number" id="hoursWorked" step="0.1">
+            </li>
+            <li>
+                <label for="hourlyRate">Hodinová sazba:</label>
+                <input type="number" id="hourlyRate">
+            </li>
+            <li>
+                <label for="additionalHours">Odpracované hodiny (doprava):</label>
+                <input type="number" id="additionalHours" step="0.1">
+            </li>
+            <li>
+                <label for="additionalRate">Hodinová sazba (doprava):</label>
+                <input type="number" id="additionalRate">
+            </li>
+        </ul>
         
-        <label for="hourlyRate">Hodinová sazba:</label>
-        <input type="number" id="hourlyRate">
-        
-        <label for="transportAllowance">Doprava:</label>
-        <input type="number" id="transportAllowance">
+        <ul>
+            <!-- Pole pro vstupy směn 1-10 -->
+            <li>
+                <label for="row1">Směna 1:</label>
+                <textarea id="row1"></textarea>
+            </li>
+            <li>
+                <label for="row2">Směna 2:</label>
+                <textarea id="row2"></textarea>
+            </li>
+            <li>
+                <label for="row3">Směna 3:</label>
+                <textarea id="row3"></textarea>
+            </li>
+            <li>
+                <label for="row4">Směna 4:</label>
+                <textarea id="row4"></textarea>
+            </li>
+            <li>
+                <label for="row5">Směna 5:</label>
+                <textarea id="row5"></textarea>
+            </li>
+            <li>
+                <label for="row6">Směna 6:</label>
+                <textarea id="row6"></textarea>
+            </li>
+            <li>
+                <label for="row7">Směna 7:</label>
+                <textarea id="row7"></textarea>
+            </li>
+            <li>
+                <label for="row8">Směna 8:</label>
+                <textarea id="row8"></textarea>
+            </li>
+            <li>
+                <label for="row9">Směna 9:</label>
+                <textarea id="row9"></textarea>
+            </li>
+            <li>
+                <label for="row10">Směna 10:</label>
+                <textarea id="row10"></textarea>
+            </li>
+        </ul>
         
         <button id="calculateButton">Spočítat</button>
+        <button id="saveButton">Uložit</button>
         
         <p id="totalEarnings">Celkový výdělek: 0 Kč</p>
     </div>
@@ -68,16 +80,44 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const calculateButton = document.getElementById("calculateButton");
+            const saveButton = document.getElementById("saveButton");
             const totalEarnings = document.getElementById("totalEarnings");
 
             calculateButton.addEventListener("click", function () {
-                const hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
-                const hourlyRate = parseFloat(document.getElementById("hourlyRate").value);
-                const transportAllowance = parseFloat(document.getElementById("transportAllowance").value);
+                const hoursWorked = parseFloat(document.getElementById("hoursWorked").value) || 0;
+                const hourlyRate = parseFloat(document.getElementById("hourlyRate").value) || 0;
+                const additionalHours = parseFloat(document.getElementById("additionalHours").value) || 0;
+                const additionalRate = parseFloat(document.getElementById("additionalRate").value) || 0;
 
-                const earnings = (hoursWorked * hourlyRate) + transportAllowance;
+                let total = (hoursWorked * hourlyRate) + (additionalHours * additionalRate);
                 
-                totalEarnings.textContent = `Celkový výdělek: ${earnings.toFixed(2)} Kč`;
+                for (let i = 1; i <= 10; i++) {
+                    const rowValue = parseFloat(document.getElementById(`row${i}`).value) || 0;
+                    total += rowValue;
+                }
+                
+                totalEarnings.textContent = `Celkový výdělek: ${total.toFixed(2)} Kč`;
+            });
+            
+            saveButton.addEventListener("click", function () {
+                let savedData = {
+                    hoursWorked: document.getElementById("hoursWorked").value,
+                    hourlyRate: document.getElementById("hourlyRate").value,
+                    additionalHours: document.getElementById("additionalHours").value,
+                    additionalRate: document.getElementById("additionalRate").value,
+                    rows: []
+                };
+                
+                for (let i = 1; i <= 10; i++) {
+                    savedData.rows.push(document.getElementById(`row${i}`).value);
+                }
+                
+                const dataJSON = JSON.stringify(savedData);
+                const blob = new Blob([dataJSON], { type: "text/plain;charset=utf-8" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "vypocet.txt";
+                a.click();
             });
         });
     </script>
