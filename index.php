@@ -1,70 +1,87 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Můj PHP web s obsahem</title>
     <style>
-        /* Základní styly pro záhlaví */
-        header {
-            background-color: #333;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
             color: #fff;
-            text-align: center;
-            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
-        /* Styly pro menu */
-        nav {
-            background-color: #444;
-            text-align: center;
-            padding: 0.5rem 0;
+        button:hover {
+            background-color: #0056b3;
         }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-
-        /* Zarovnání textu v hlavní části obsahu */
-        main {
-            text-align: center;
-            margin: 2rem;
+        #totalEarnings {
+            font-weight: bold;
+            margin-top: 20px;
         }
     </style>
-    <script>
-        // Jednoduché JavaScriptové upozornění při načtení stránky
-        window.onload = function() {
-            alert("Vítejte na mé webové stránce!");
-        };
-    </script>
+    <title>Výpočet Výdělku</title>
 </head>
 <body>
-    <header>
-        <h1>Vítejte na mé PHP webové stránce</h1>
-    </header>
-    <nav>
-        <?php
-        $menuItems = array(
-            "Domů" => "#",
-            "O nás" => "#",
-            "Služby" => "#",
-            "Kontakt" => "#"
-        );
+    <div class="calculator">
+        <h1>Kalkulačka Výdělku</h1>
+        <label for="hoursWorked">Odpracované hodiny:</label>
+        <input type="number" id="hoursWorked" step="0.1">
+        
+        <label for="hourlyRate">Hodinová sazba:</label>
+        <input type="number" id="hourlyRate">
+        
+        <label for="transportAllowance">Doprava:</label>
+        <input type="number" id="transportAllowance">
+        
+        <button id="calculateButton">Spočítat</button>
+        
+        <p id="totalEarnings">Celkový výdělek: 0 Kč</p>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calculateButton = document.getElementById("calculateButton");
+            const totalEarnings = document.getElementById("totalEarnings");
 
-        foreach ($menuItems as $title => $link) {
-            echo "<a href=\"$link\">$title</a>";
-        }
-        ?>
-    </nav>
-    <main>
-        <h2>O nás</h2>
-        <p>Jsme tým nadšených vývojářů a designérů, kteří tvoří moderní a kreativní webové stránky.</p>
-        <h2>Naše služby</h2>
-        <p>Webový design, vývoj webových aplikací, responzivní design, SEO optimalizace</p>
-        <h2>Kontakt</h2>
-        <p>Máte-li nějaké dotazy, kontaktujte nás na <a href="mailto:info@example.com">info@example.com</a>.</p>
-    </main>
+            calculateButton.addEventListener("click", function () {
+                const hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
+                const hourlyRate = parseFloat(document.getElementById("hourlyRate").value);
+                const transportAllowance = parseFloat(document.getElementById("transportAllowance").value);
+
+                const earnings = (hoursWorked * hourlyRate) + transportAllowance;
+                
+                totalEarnings.textContent = `Celkový výdělek: ${earnings.toFixed(2)} Kč`;
+            });
+        });
+    </script>
 </body>
 </html>
+
 
