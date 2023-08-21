@@ -100,20 +100,18 @@
             });
             
             saveButton.addEventListener("click", function () {
-                let savedData = {
-                    hoursWorked: document.getElementById("hoursWorked").value,
-                    hourlyRate: document.getElementById("hourlyRate").value,
-                    additionalHours: document.getElementById("additionalHours").value,
-                    additionalRate: document.getElementById("additionalRate").value,
-                    rows: []
-                };
-                
+                let savedData = "";
+
+                savedData += `Odpracované hodiny: ${document.getElementById("hoursWorked").value}\n`;
+                savedData += `Hodinová sazba: ${document.getElementById("hourlyRate").value}\n`;
+                savedData += `Odpracované hodiny (doprava): ${document.getElementById("additionalHours").value}\n`;
+                savedData += `Hodinová sazba (doprava): ${document.getElementById("additionalRate").value}\n`;
+
                 for (let i = 1; i <= 10; i++) {
-                    savedData.rows.push(document.getElementById(`row${i}`).value);
+                    savedData += `Směna ${i}: ${document.getElementById(`row${i}`).value}\n`;
                 }
-                
-                const dataJSON = JSON.stringify(savedData);
-                const blob = new Blob([dataJSON], { type: "text/plain;charset=utf-8" });
+
+                const blob = new Blob([savedData], { type: "text/plain;charset=utf-8" });
                 const a = document.createElement("a");
                 a.href = URL.createObjectURL(blob);
                 a.download = "vypocet.txt";
@@ -123,5 +121,6 @@
     </script>
 </body>
 </html>
+
 
 
