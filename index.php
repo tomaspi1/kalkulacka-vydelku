@@ -11,7 +11,7 @@
         <ul>
             <li>
                 <label for="hoursWorked">Odpracované hodiny:</label>
-                <input type="number" id="hoursWorked" step="0.1">
+                <input type="number" id="hoursWorked" step="1">
             </li>
             <li>
                 <label for="hourlyRate">Hodinová sazba:</label>
@@ -19,7 +19,7 @@
             </li>
             <li>
                 <label for="additionalHours">Odpracované hodiny (doprava):</label>
-                <input type="number" id="additionalHours" step="0.1">
+                <input type="number" id="additionalHours" step="1">
             </li>
             <li>
                 <label for="additionalRate">Hodinová sazba (doprava):</label>
