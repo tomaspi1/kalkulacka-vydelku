@@ -26,6 +26,9 @@
                 <input type="number" id="additionalRate">
             </li>
         </ul>
+
+<p>Seznam poznámek pro jednotlivé směny </p>
+
         
         <ul>
             <!-- Pole pro vstupy směn 1-10 -->
