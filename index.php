@@ -27,7 +27,7 @@
             </li>
         </ul>
 
-<p>Seznam poznámek pro jednotlivé směny </p>
+<p>Seznam poznámek pro jednotlivé směny: </p>
 
         
         <ul>
